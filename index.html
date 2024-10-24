@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Calorias - Fase de Manutenção</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            font-size: 16px;
+            padding: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .image-container {
+            margin-top: 30px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px; /* Isso dá bordas arredondadas à imagem */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Fase de Manutenção - Cálculo de Calorias</h1>
+    <p>Insira o peso em kg para calcular as calorias diárias.</p>
+
+    <input type="number" id="peso" placeholder="Digite o peso em kg">
+    <button onclick="calcularKcal()">Calcular</button>
+
+    <div class="result" id="resultado"></div>
+
+    <!-- Aqui é o espaço onde a imagem será adicionada -->
+    <div class="image-container">
+        <img src="https://i.postimg.cc/85zS0HSn/Captura-de-tela-2024-10-24-204908.png" alt="Imagem de exemplo">
+    </div>
+
+    <script>
+        function calcularKcal() {
+            const peso = parseFloat(document.getElementById('peso').value);
+            let kcal = 0;
+
+            if (peso <= 10) {
+                // Regra para pesos até 10 kg
+                kcal = 100 * peso;
+            } else if (peso > 10 && peso <= 20) {
+                // Regra para pesos entre 10 kg e 20 kg
+                kcal = 1000 + 50 * (peso - 10);
+            } else {
+                // Regra para pesos acima de 20 kg
+                kcal = 1500 + 20 * (peso - 20);
+            }
+
+            // Exibe o resultado
+            document.getElementById('resultado').innerHTML = `Calorias necessárias: ${kcal.toFixed(2)} kcal`;
+        }
+    </script>
+
+</body>
+</html>
